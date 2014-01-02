@@ -1,0 +1,13 @@
+// $Id$
+// vim:ft=javascript
+
+// If your extension references something external, use ARG_WITH
+// ARG_WITH("smaz", "for smaz support", "no");
+
+// Otherwise, use ARG_ENABLE
+// ARG_ENABLE("smaz", "enable smaz support", "no");
+
+if (PHP_SMAZ != "no") {
+	EXTENSION("smaz", "smaz.c");
+}
+
