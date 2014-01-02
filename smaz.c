@@ -39,9 +39,9 @@ static int le_smaz;
  * Every user visible function must have an entry in smaz_functions[].
  */
 const zend_function_entry smaz_functions[] = {
-	PHP_FE(smaz_encode, NULL)
-	PHP_FE(smaz_decode, NULL)
-	PHP_FE_END	/* Must be the last line in smaz_functions[] */
+    PHP_FE(smaz_encode, NULL)
+    PHP_FE(smaz_decode, NULL)
+    PHP_FE_END    /* Must be the last line in smaz_functions[] */
 };
 /* }}} */
 
@@ -49,19 +49,19 @@ const zend_function_entry smaz_functions[] = {
  */
 zend_module_entry smaz_module_entry = {
 #if ZEND_MODULE_API_NO >= 20010901
-	STANDARD_MODULE_HEADER,
+    STANDARD_MODULE_HEADER,
 #endif
-	"smaz",
-	smaz_functions,
-	PHP_MINIT(smaz),
-	PHP_MSHUTDOWN(smaz),
-	PHP_RINIT(smaz),		/* Replace with NULL if there's nothing to do at request start */
-	PHP_RSHUTDOWN(smaz),	/* Replace with NULL if there's nothing to do at request end */
-	PHP_MINFO(smaz),
+    "smaz",
+    smaz_functions,
+    PHP_MINIT(smaz),
+    PHP_MSHUTDOWN(smaz),
+    PHP_RINIT(smaz),        /* Replace with NULL if there's nothing to do at request start */
+    PHP_RSHUTDOWN(smaz),    /* Replace with NULL if there's nothing to do at request end */
+    PHP_MINFO(smaz),
 #if ZEND_MODULE_API_NO >= 20010901
-	"0.1", /* Replace with version number for your extension */
+    "0.1", /* Replace with version number for your extension */
 #endif
-	STANDARD_MODULE_PROPERTIES
+    STANDARD_MODULE_PROPERTIES
 };
 /* }}} */
 
@@ -84,8 +84,8 @@ PHP_INI_END()
 /* Uncomment this function if you have INI entries
 static void php_smaz_init_globals(zend_smaz_globals *smaz_globals)
 {
-	smaz_globals->global_value = 0;
-	smaz_globals->global_string = NULL;
+    smaz_globals->global_value = 0;
+    smaz_globals->global_string = NULL;
 }
 */
 /* }}} */
@@ -94,10 +94,10 @@ static void php_smaz_init_globals(zend_smaz_globals *smaz_globals)
  */
 PHP_MINIT_FUNCTION(smaz)
 {
-	/* If you have INI entries, uncomment these lines 
-	REGISTER_INI_ENTRIES();
-	*/
-	return SUCCESS;
+    /* If you have INI entries, uncomment these lines 
+    REGISTER_INI_ENTRIES();
+    */
+    return SUCCESS;
 }
 /* }}} */
 
@@ -105,10 +105,10 @@ PHP_MINIT_FUNCTION(smaz)
  */
 PHP_MSHUTDOWN_FUNCTION(smaz)
 {
-	/* uncomment this line if you have INI entries
-	UNREGISTER_INI_ENTRIES();
-	*/
-	return SUCCESS;
+    /* uncomment this line if you have INI entries
+    UNREGISTER_INI_ENTRIES();
+    */
+    return SUCCESS;
 }
 /* }}} */
 
@@ -117,7 +117,7 @@ PHP_MSHUTDOWN_FUNCTION(smaz)
  */
 PHP_RINIT_FUNCTION(smaz)
 {
-	return SUCCESS;
+    return SUCCESS;
 }
 /* }}} */
 
@@ -126,7 +126,7 @@ PHP_RINIT_FUNCTION(smaz)
  */
 PHP_RSHUTDOWN_FUNCTION(smaz)
 {
-	return SUCCESS;
+    return SUCCESS;
 }
 /* }}} */
 
@@ -134,13 +134,13 @@ PHP_RSHUTDOWN_FUNCTION(smaz)
  */
 PHP_MINFO_FUNCTION(smaz)
 {
-	php_info_print_table_start();
-	php_info_print_table_header(2, "smaz support", "enabled");
-	php_info_print_table_end();
+    php_info_print_table_start();
+    php_info_print_table_header(2, "smaz support", "enabled");
+    php_info_print_table_end();
 
-	/* Remove comments if you have entries in php.ini
-	DISPLAY_INI_ENTRIES();
-	*/
+    /* Remove comments if you have entries in php.ini
+    DISPLAY_INI_ENTRIES();
+    */
 }
 /* }}} */
 
@@ -152,13 +152,13 @@ PHP_MINFO_FUNCTION(smaz)
 /* Every user-visible function in PHP should document itself in the source */
 PHP_FUNCTION(smaz_encode)
 {
-	char *arg = NULL;
-	int arg_len, len;
-	char strg[4096];
+    char *arg = NULL;
+    int arg_len, len;
+    char strg[4096];
 
-	if(zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &arg, &arg_len) == FAILURE) {
-		return;
-	}
+    if(zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &arg, &arg_len) == FAILURE) {
+        return;
+    }
     len = smaz_compress(arg, arg_len, strg, sizeof(strg));
     RETURN_STRINGL(strg, len, 1);
 }
@@ -166,8 +166,8 @@ PHP_FUNCTION(smaz_encode)
 PHP_FUNCTION(smaz_decode)
 {
     char *arg = NULL;
-	int arg_len, len;
-	char strg[4096];
+    int arg_len, len;
+    char strg[4096];
 
     if(zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &arg, &arg_len) == FAILURE) {
         return;
